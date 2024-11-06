@@ -19,6 +19,8 @@ services:
     restart: on-failure
     ports:
       - "8089:8089"
+    networks:
+      - myNetwork
     environment:
       SPRING_APPLICATION_JSON: '{
         "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/tpfoyer_db?createDatabaseIfNotExist=true&useSSL=false",
@@ -29,6 +31,9 @@ services:
       }'
     stdin_open: true
     tty: true
+    
+networks:
+  myNetwork:
 
 volumes:
   db:
